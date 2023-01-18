@@ -2,6 +2,7 @@
 
 #include <cstdlib>
 #include <random>
+#include <cmath>
 
 namespace tetravex
 {
@@ -28,16 +29,29 @@ namespace tetravex
         double new_cost;
         while(last_cost != 0)
         {
-            int nb_swap = round(1 + std::abs(clock(gen)));
+            // int nb_swap = round(1 + std::abs(clock(gen)));
+            int nb_swap = 1;
 
             auto next = board->next_board(nb_swap);
 
             new_cost = next->cost();
-            double alpha = new_cost / last_cost;
+            // double alpha = new_cost / last_cost;
+
+
+            if (new_cost < last_cost)
+            {
+                delete board;
+                board = next;
+                last_cost = new_cost;
+
+                continue;
+            }
 
             double u = double(std::rand()) / RAND_MAX;
+            double ratio = std::exp(last_cost - new_cost);
 
-            if (u <= alpha)
+            //if (u <= alpha)
+            if (ratio > u)
             {
                 delete board;
                 board = next;
