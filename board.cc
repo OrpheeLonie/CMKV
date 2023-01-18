@@ -7,6 +7,11 @@
 
 namespace tetravex
 {
+    Board::Board()
+        : size{0}
+        , tuiles{}
+    {}
+
     Board::Board(std::string filename)
     {
         std::string line;
@@ -31,5 +36,27 @@ namespace tetravex
             ostr << t << '\n';
         }
         return ostr;
+    }
+
+    Board *Board::copy()
+    {
+        return new Board();
+    }
+
+    Board *Board::next_board(size_t nb_swap)
+    {
+        nb_swap = nb_swap;
+        return new Board();
+    }
+
+    void Board::swap(size_t i1, size_t i2)
+    {
+        i1 = i1;
+        i2 = i2;
+    }
+
+    int Board::cost()
+    {
+        return 0;
     }
 }
