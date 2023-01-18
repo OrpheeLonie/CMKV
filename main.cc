@@ -9,6 +9,8 @@ int main()
     tetravex::Board *next = board->next_board(1);
 
     std::cout << "Board:\n" << *board << "Next board:\n" << *next;
+
+    std::cout << "\nBoard: " << board->cost() << "\nNext board: " << next->cost() << "\n";
     delete board;
     delete next;
 

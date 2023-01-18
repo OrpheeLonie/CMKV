@@ -77,6 +77,17 @@ namespace tetravex
 
     int Board::cost()
     {
-        return 0;
+        int total_cost = 0;
+
+        for (size_t i = 0; i < this->tuiles.size() - 1; i++)
+        {
+            if ((i+1) % size != 0 && tuiles[i].get_right() != tuiles[i+1].get_left())
+                total_cost++;
+
+            if (i + size < tuiles.size() && tuiles[i].get_bottom() != tuiles[i + size].get_top())
+                total_cost++;
+        }
+
+        return total_cost;
     }
 }
