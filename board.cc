@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <cmath>
+#include <cstdlib>
 
 namespace tetravex
 {
@@ -50,8 +51,19 @@ namespace tetravex
 
     Board *Board::next_board(size_t nb_swap)
     {
-        nb_swap = nb_swap;
-        return new Board();
+        Board *next_b = this->copy();
+        size_t len = this->size * this->size;
+
+        for (size_t i = 0; i < nb_swap; i++)
+        {
+            int i1 = 0, i2 = 0;
+            do
+            {
+                i1 = rand() % len;
+                i2 = rand() % len;
+            } while(i1 != i2);
+        }
+        return next_b;
     }
 
     void Board::swap(size_t i1, size_t i2)
