@@ -10,6 +10,8 @@ namespace tetravex
     class Board
     {
     public:
+        size_t size; // size * size matrix and number of tuiles
+
         Board();
         Board(size_t size, std::vector<Tuile> tuiles);
         Board(std::string filename);
@@ -28,7 +30,6 @@ namespace tetravex
         int cost();
 
     private:
-        size_t size; // size * size matrix and number of tuiles
         std::vector<Tuile> tuiles; // all tuiles in the board
     };
 }

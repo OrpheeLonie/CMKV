@@ -1,7 +1,7 @@
 CXX=g++
 CXXFLAGS=-std=c++17 -Wall -Wextra -Werror -pedantic # -save-temps
 
-OBJ=main.o board.o tuile.o
+OBJ=main.o board.o tuile.o solver.o
 
 TARGET=main
 
