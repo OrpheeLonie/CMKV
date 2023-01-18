@@ -15,6 +15,8 @@ namespace tetravex
         Board(std::string filename);
         friend std::ostream &operator<<(std::ostream &ostr, Board b);
 
+        void pretty_print(std::ostream &ostr);
+
         // Give a copy of the board
         Board *copy();
         // Create the next board, given a number of swap
