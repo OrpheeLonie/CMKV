@@ -6,7 +6,7 @@ namespace tetravex
     {
         for (size_t i = 0; i < 4; i++)
             this->numbers[i] = piece[i] - '0';
-        this->is_fixed = piece.length() > 4;
+        this->is_fixed = piece.length() > 4 && piece[4] == '@';
     }
 
     int Tuile::get_top()
