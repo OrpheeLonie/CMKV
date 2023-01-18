@@ -23,4 +23,13 @@ namespace tetravex
             this->size = std::sqrt(size);
         }
     }
+
+    std::ostream &operator<<(std::ostream &ostr, Board b)
+    {
+        for (Tuile t : b.tuiles)
+        {
+            ostr << t << '\n';
+        }
+        return ostr;
+    }
 }

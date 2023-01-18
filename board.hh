@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 
 #include "tuile.hh"
 
@@ -10,6 +11,7 @@ namespace tetravex
     {
     public:
         Board(std::string filename);
+        friend std::ostream &operator<<(std::ostream &ostr, Board b);
 
     private:
         int size; // size * size matrix and number of tuiles
