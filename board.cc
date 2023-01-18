@@ -44,6 +44,37 @@ namespace tetravex
         return ostr;
     }
 
+    void Board::pretty_print(std::ostream &ostr)
+    {
+        std::string interline = "+";
+        for (size_t i = 0; i < size; i++)
+            interline += "-----+";
+        interline += '\n';
+
+        ostr << interline;
+
+        for (size_t i = 0; i < size; i++)
+        {
+            ostr << "|";
+            for (size_t j = 0; j < size; j++)
+                ostr << "  " << tuiles[i * size + j].get_top() << "  |";
+            ostr << "\n";
+
+            ostr << "|";
+            for (size_t j = 0; j < size; j++)
+                ostr << " " << tuiles[i * size + j].get_left() << " "
+                     << tuiles[i * size + j].get_right() << " |";
+            ostr << "\n";
+
+            ostr << "|";
+            for (size_t j = 0; j < size; j++)
+                ostr << "  " << tuiles[i * size + j].get_bottom() << "  |";
+            ostr << "\n";
+
+            ostr << interline;
+        }
+    }
+
     Board *Board::copy()
     {
         return new Board(this->size, this->tuiles);
