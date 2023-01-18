@@ -61,15 +61,18 @@ namespace tetravex
             {
                 i1 = rand() % len;
                 i2 = rand() % len;
-            } while(i1 != i2);
+            } while(i1 == i2);
+
+            next_b->swap(i1, i2);
         }
         return next_b;
     }
 
     void Board::swap(size_t i1, size_t i2)
     {
-        i1 = i1;
-        i2 = i2;
+        Tuile tmp = this->tuiles[i1];
+        tuiles[i1] = tuiles[i2];
+        tuiles[i2] = tmp;
     }
 
     int Board::cost()
