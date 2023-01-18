@@ -7,6 +7,8 @@ namespace tetravex
     class Solver
     {
     public:
+        Board *board;
+
         Solver(Board *b);
         Solver(std::string filename);
         ~Solver();
@@ -14,6 +16,5 @@ namespace tetravex
         Board *no_probleme();
 
     private:
-        Board *board;
     };
 }

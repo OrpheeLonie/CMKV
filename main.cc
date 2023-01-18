@@ -22,7 +22,9 @@ int main()
     delete board;
     delete next;
 
-    tetravex::Solver *solver = new tetravex::Solver("data/input/s2-02.txt");
+    tetravex::Solver *solver = new tetravex::Solver("data/input/s3-02.txt");
+    std::cout << "Solver's board:\n" << *(solver->board) << "\n";
+    solver->board->pretty_print(std::cout);
 
     solver->no_probleme()->pretty_print(std::cout);
 
