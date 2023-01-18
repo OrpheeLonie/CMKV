@@ -35,7 +35,7 @@ namespace tetravex
             new_cost = next->cost();
             double alpha = new_cost / last_cost;
 
-            double u = std::rand() / RAND_MAX;
+            double u = double(std::rand()) / RAND_MAX;
 
             if (u <= alpha)
             {
