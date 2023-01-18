@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <iostream>
 
 namespace tetravex
 {
@@ -8,6 +9,7 @@ namespace tetravex
     {
     public:
         Tuile(std::string piece);
+        friend std::ostream &operator<<(std::ostream &ostr, Tuile t);
 
     private:
         bool is_fixed;

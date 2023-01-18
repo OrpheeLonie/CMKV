@@ -25,4 +25,13 @@ namespace tetravex
     {
         return this->numbers[2];
     }
+
+    std::ostream &operator<<(std::ostream &ostr, Tuile t)
+    {
+        ostr << t.get_top() << t.get_left() << t.get_right() << t.get_bottom();
+        if (t.is_fixed)
+            ostr << " @";
+
+        return ostr;
+    }
 }
