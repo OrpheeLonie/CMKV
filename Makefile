@@ -14,7 +14,7 @@ check: ${TARGET}
 	./${TARGET}
 
 prof:
-	g++ -DNDEBUG -O5 -std=c++17 -lpthread -W *.cc
+	g++ -DNDEBUG -O5 -std=c++17 -lpthread -Wl,--no-as-needed *.cc
 
 clean:
 	$(RM) $(TARGET) $(OBJ) a.out
