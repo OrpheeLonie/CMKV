@@ -12,6 +12,11 @@ namespace tetravex
         , tuiles{}
     {}
 
+    Board::Board(size_t size, std::vector<Tuile> tuiles)
+        : size{size}
+        , tuiles{tuiles}
+    {}
+
     Board::Board(std::string filename)
     {
         std::string line;
@@ -40,7 +45,7 @@ namespace tetravex
 
     Board *Board::copy()
     {
-        return new Board();
+        return new Board(this->size, this->tuiles);
     }
 
     Board *Board::next_board(size_t nb_swap)

@@ -11,6 +11,7 @@ namespace tetravex
     {
     public:
         Board();
+        Board(size_t size, std::vector<Tuile> tuiles);
         Board(std::string filename);
         friend std::ostream &operator<<(std::ostream &ostr, Board b);
 
@@ -25,7 +26,7 @@ namespace tetravex
         int cost();
 
     private:
-        int size; // size * size matrix and number of tuiles
+        size_t size; // size * size matrix and number of tuiles
         std::vector<Tuile> tuiles; // all tuiles in the board
     };
 }
