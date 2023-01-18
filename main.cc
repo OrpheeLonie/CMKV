@@ -5,6 +5,8 @@
 
 int main()
 {
-    std::cout << "Hello world!\n";
+    tetravex::Board board("data/input/s2-02.txt");
+
+    std::cout << "Board loaded:\n" << board;
     return 0;
 }
