@@ -90,9 +90,9 @@ namespace tetravex
             int i1 = 0, i2 = 0;
             do
             {
-                i1 = rand() % len;
-                i2 = rand() % len;
-            } while(i1 == i2);
+                i1 = std::rand() % len;
+                i2 = std::rand() % len;
+            } while(i1 == i2 || tuiles[i1].is_fixed || tuiles[i2].is_fixed);
 
             next_b->swap(i1, i2);
         }

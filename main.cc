@@ -1,10 +1,14 @@
 #include <iostream>
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 
 #include "board.hh"
 
 int main()
 {
+    std::srand(std::time(nullptr));
+
     tetravex::Board *board = new tetravex::Board("data/input/s2-02.txt");
     tetravex::Board *next = board->next_board(1);
 

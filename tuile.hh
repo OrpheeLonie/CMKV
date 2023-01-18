@@ -8,6 +8,8 @@ namespace tetravex
     class Tuile
     {
     public:
+        bool is_fixed;
+
         Tuile(std::string piece);
         friend std::ostream &operator<<(std::ostream &ostr, Tuile t);
 
@@ -17,7 +19,6 @@ namespace tetravex
         int get_right();
 
     private:
-        bool is_fixed;
         std::array<int, 4> numbers;
     };
 }
