@@ -18,6 +18,7 @@ namespace tetravex
         friend std::ostream &operator<<(std::ostream &ostr, Board b);
 
         void pretty_print(std::ostream &ostr);
+        void save_board(std::string filename);
 
         // Give a copy of the board
         Board *copy();
