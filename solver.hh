@@ -13,7 +13,7 @@ namespace tetravex
         Solver(std::string filename);
         ~Solver();
 
-        Board *no_probleme();
+        Board *no_probleme(double T, double degradation, double minT);
 
     private:
     };
