@@ -28,8 +28,9 @@ namespace tetravex
 
         double last_cost = board->cost();
         double new_cost;
-        double T = 666;
-        int i = 0;
+        double T = board->size * 111;
+        double min_t = 0.4; //1 - board->size / 10;
+        //int i = 0;
 
         while(last_cost != 0)
         {
@@ -40,16 +41,18 @@ namespace tetravex
             // double alpha = new_cost / last_cost;
 
 
+            /*
             i++;
             if (i%10000 == 0)
                 std::cout << i << ": " << last_cost << "\n";
+                */
 
             //if (u <= alpha)
             if (new_cost < last_cost ||
                     std::exp((last_cost - new_cost)/T) > (double(std::rand()) / RAND_MAX))
             {
                 T *= 0.9999;
-                T = std::max(T, 0.4);
+                T = std::max(T, min_t);
 
                 last_cost = new_cost;
             }
