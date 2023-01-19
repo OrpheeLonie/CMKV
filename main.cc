@@ -2,8 +2,6 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
-#include <sstream>
-#include <chrono>
 
 #include "board.hh"
 #include "solver.hh"
