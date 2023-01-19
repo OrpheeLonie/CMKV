@@ -19,14 +19,8 @@ namespace tetravex
 
         void pretty_print(std::ostream &ostr);
 
-        // Give a copy of the board
-        Board *copy();
-        // Create the next board, given a number of swap
-        Board *next_board(size_t nb_swap);
         // Swap the tiles at index i1 and i2
         void swap(size_t i1, size_t i2);
-
-
         std::tuple<size_t, size_t> random_swap();
         void rollback_swap(std::tuple<size_t, size_t> move);
 

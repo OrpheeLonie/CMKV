@@ -76,30 +76,6 @@ namespace tetravex
         }
     }
 
-    Board *Board::copy()
-    {
-        return new Board(this->size, this->tuiles);
-    }
-
-    Board *Board::next_board(size_t nb_swap)
-    {
-        Board *next_b = this->copy();
-        size_t len = this->size * this->size;
-
-        for (size_t i = 0; i < nb_swap; i++)
-        {
-            int i1 = 0, i2 = 0;
-            do
-            {
-                i1 = std::rand() % len;
-                i2 = std::rand() % len;
-            } while(i1 == i2 || tuiles[i1].is_fixed || tuiles[i2].is_fixed);
-
-            next_b->swap(i1, i2);
-        }
-        return next_b;
-    }
-
     void Board::swap(size_t i1, size_t i2)
     {
         Tuile tmp = this->tuiles[i1];
