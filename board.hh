@@ -17,7 +17,7 @@ namespace tetravex
         Board(size_t size, std::vector<Tuile *> tuiles);
         Board(std::string filename);
         ~Board();
-        friend std::ostream &operator<<(std::ostream &ostr, Board b);
+        friend std::ostream &operator<<(std::ostream &ostr, Board *b);
 
         void pretty_print(std::ostream &ostr);
 

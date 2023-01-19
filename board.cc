@@ -43,9 +43,9 @@ namespace tetravex
         }
     }
 
-    std::ostream &operator<<(std::ostream &ostr, Board b)
+    std::ostream &operator<<(std::ostream &ostr, Board *b)
     {
-        for (Tuile *t : b.tuiles)
+        for (Tuile *t : b->tuiles)
         {
             ostr << *t << '\n';
         }
