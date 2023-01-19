@@ -159,7 +159,7 @@ namespace tetravex
     {
         std::ofstream file;
         file.open(filename);
-        file << *this;
+        file << this;
         file.close();
     }
 }
