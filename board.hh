@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <iostream>
+#include <tuple>
 
 #include "tuile.hh"
 
@@ -13,8 +14,9 @@ namespace tetravex
         size_t size; // size * size matrix and number of tuiles
 
         Board();
-        Board(size_t size, std::vector<Tuile> tuiles);
+        Board(size_t size, std::vector<Tuile *> tuiles);
         Board(std::string filename);
+        ~Board();
         friend std::ostream &operator<<(std::ostream &ostr, Board b);
 
         void pretty_print(std::ostream &ostr);
@@ -28,6 +30,6 @@ namespace tetravex
         int cost();
 
     private:
-        std::vector<Tuile> tuiles; // all tuiles in the board
+        std::vector<Tuile *> tuiles; // all tuiles in the board
     };
 }
