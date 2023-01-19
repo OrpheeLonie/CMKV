@@ -34,9 +34,9 @@ int main()
     // best for 5x5: 475, 0.99, 0.4 pas vraiment tester mais osef
     // best for 6x6: 575, 0.9875, 0.375 => <30s atteint avec pur board sans case fixe
 
-    double temperatures[] = {575};
-    double degradation_rates[] = {0.9875, .99};
-    double min_temperatures[] = {.3625, .375};
+    double temperatures[] = {1};
+    double degradation_rates[] = {.99};
+    double min_temperatures[] = {.375};
 
     // make a vector of string containing the addresses of the files
     std::vector<std::string> paths;
@@ -63,7 +63,7 @@ int main()
                 double d = degradation_rates[k];
                 double m = min_temperatures[l];
 
-                for (auto h = 0; h < 3; h++){
+                for (auto h = 0; h < 20 && best_time.count() > 30; h++){
                     auto start = std::chrono::system_clock::now();
                     for (int i = 0; i < 10; i++) {
                         tetravex::Solver *solver = new tetravex::Solver(paths[1]);
