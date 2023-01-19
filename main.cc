@@ -8,6 +8,15 @@
 
 int main(int argc, char **argv)
 {
+    if (argc < 3)
+    {
+        std::cout << "Wrong number of arguments, usage:\n" << argv[0] << " input_file output_file\n";
+        exit(0);
+    }
+
+    std::string input_file = argv[1];
+    std::string output_file = argv[2];
+
     std::srand(std::time(nullptr));
 
     tetravex::Solver *solver = new tetravex::Solver(input_file);
