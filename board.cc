@@ -5,6 +5,7 @@
 #include <string>
 #include <cmath>
 #include <cstdlib>
+#include <sstream>
 
 namespace tetravex
 {
@@ -22,17 +23,21 @@ namespace tetravex
     {
         std::string line;
         std::ifstream file(filename);
-        if (file.is_open())
+        if (!file.is_open())
         {
-            this->size = 0;
-            while (getline(file, line))
-            {
-                Tuile *tuile = new Tuile(line);
-                this->tuiles.push_back(tuile);
-                size++;
-            }
-            this->size = std::sqrt(size);
+            std::ostringstream os;
+            os << "Error: file '" << filename << "' does not exist";
+            throw std::runtime_error(os.str());
         }
+
+        this->size = 0;
+        while (getline(file, line))
+        {
+            Tuile *tuile = new Tuile(line);
+            this->tuiles.push_back(tuile);
+            size++;
+        }
+        this->size = std::sqrt(size);
     }
 
     Board::~Board()
