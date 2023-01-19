@@ -20,6 +20,7 @@ namespace tetravex
         friend std::ostream &operator<<(std::ostream &ostr, Board *b);
 
         void pretty_print(std::ostream &ostr);
+        void save_board(std::string filename);
 
         // Swap the tiles at index i1 and i2
         void swap(size_t i1, size_t i2);

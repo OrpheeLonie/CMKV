@@ -154,4 +154,12 @@ namespace tetravex
 
         return total_cost;
     }
+
+    void Board::save_board(std::string filename)
+    {
+        std::ofstream file;
+        file.open(filename);
+        file << this;
+        file.close();
+    }
 }
