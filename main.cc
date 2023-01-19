@@ -2,10 +2,11 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <sstream>
+#include <chrono>
 
 #include "board.hh"
 #include "solver.hh"
-#include <chrono>
 
 int main()
 {
@@ -37,9 +38,16 @@ int main()
     double degradation_rates[] = {0.99, 0.995, 0.985};
     double min_temperatures[] = {0.425, 0.45, 0.475};
 
-    // run the solver 10 times for each temperature and degradation rate
+    // make a vector of string containing the addresses of the files
+    std::vector<std::string> paths;
+    for (int i = 1; i < 10; i++){
+        std::ostringstream ss;
+        ss << i;
+        paths.push_back("data/input/s4-0" + ss.str() + ".txt");
+    }
 
-    // make a best time variable and a best temperature and degradation rate variable and update them if the time is better
+    
+
     std::chrono::duration<double> best_time = std::chrono::duration<double>::max();
     double best_temperature;
     double best_degradation_rate;
@@ -58,7 +66,7 @@ int main()
 
                 auto start = std::chrono::system_clock::now();
                 for (int i = 0; i < 70; i++) {
-                    tetravex::Solver *solver = new tetravex::Solver("data/input/s4-09.txt");
+                    tetravex::Solver *solver = new tetravex::Solver(paths[i%9]);
                     // std::cout << "Solver's board "<< i << " started!\n";
                     // solver->board->pretty_print(std::cout);
 
