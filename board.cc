@@ -65,18 +65,30 @@ namespace tetravex
         {
             ostr << "|";
             for (size_t j = 0; j < size; j++)
-                ostr << "  " << tuiles[i * size + j]->get_top() << "  |";
+            {
+                if (tuiles[i * size + j]->is_fixed)
+                    ostr << "\033[42;30m";
+                ostr << "  " << tuiles[i * size + j]->get_top() << "  \033[0m|";
+            }
             ostr << "\n";
 
             ostr << "|";
             for (size_t j = 0; j < size; j++)
+            {
+                if (tuiles[i * size + j]->is_fixed)
+                    ostr << "\033[42;30m";
                 ostr << " " << tuiles[i * size + j]->get_left() << " "
-                     << tuiles[i * size + j]->get_right() << " |";
+                     << tuiles[i * size + j]->get_right() << " \033[0m|";
+            }
             ostr << "\n";
 
             ostr << "|";
             for (size_t j = 0; j < size; j++)
-                ostr << "  " << tuiles[i * size + j]->get_bottom() << "  |";
+            {
+                if (tuiles[i * size + j]->is_fixed)
+                    ostr << "\033[42;30m";
+                ostr << "  " << tuiles[i * size + j]->get_bottom() << "  \033[0m|";
+            }
             ostr << "\n";
 
             ostr << interline;
