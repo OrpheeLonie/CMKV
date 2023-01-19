@@ -26,6 +26,9 @@ namespace tetravex
         std::tuple<size_t, size_t> random_swap();
         void rollback_swap(std::tuple<size_t, size_t> move);
 
+        std::vector<std::tuple<size_t, size_t>> nb_random_swap(size_t nb_swap);
+        void rollback_nb_swap(std::vector<std::tuple<size_t, size_t>> moves);
+
         // Give the number of error
         int cost();
 

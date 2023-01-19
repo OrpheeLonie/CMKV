@@ -28,7 +28,10 @@ namespace tetravex
 
         double last_cost = board->cost();
         double new_cost;
-        // int i = 0;
+        // double T = board->size * 111;
+        // double min_t = 0.4; 
+        //1 - board->size / 10;
+        //int i = 0;
 
         while(last_cost != 0)
         {

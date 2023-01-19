@@ -65,18 +65,30 @@ namespace tetravex
         {
             ostr << "|";
             for (size_t j = 0; j < size; j++)
-                ostr << "  " << tuiles[i * size + j]->get_top() << "  |";
+            {
+                if (tuiles[i * size + j]->is_fixed)
+                    ostr << "\033[42;30m";
+                ostr << "  " << tuiles[i * size + j]->get_top() << "  \033[0m|";
+            }
             ostr << "\n";
 
             ostr << "|";
             for (size_t j = 0; j < size; j++)
+            {
+                if (tuiles[i * size + j]->is_fixed)
+                    ostr << "\033[42;30m";
                 ostr << " " << tuiles[i * size + j]->get_left() << " "
-                     << tuiles[i * size + j]->get_right() << " |";
+                     << tuiles[i * size + j]->get_right() << " \033[0m|";
+            }
             ostr << "\n";
 
             ostr << "|";
             for (size_t j = 0; j < size; j++)
-                ostr << "  " << tuiles[i * size + j]->get_bottom() << "  |";
+            {
+                if (tuiles[i * size + j]->is_fixed)
+                    ostr << "\033[42;30m";
+                ostr << "  " << tuiles[i * size + j]->get_bottom() << "  \033[0m|";
+            }
             ostr << "\n";
 
             ostr << interline;
@@ -109,6 +121,22 @@ namespace tetravex
     void Board::rollback_swap(std::tuple<size_t, size_t> move)
     {
         swap(std::get<0>(move), std::get<1>(move));
+    }
+
+    std::vector<std::tuple<size_t, size_t>> Board::nb_random_swap(size_t nb_swap)
+    {
+        std::vector<std::tuple<size_t, size_t>> output;
+
+        for (size_t i = 0; i < nb_swap; i++)
+            output.push_back(random_swap());
+
+        return output;
+    }
+
+    void Board::rollback_nb_swap(std::vector<std::tuple<size_t, size_t>> moves)
+    {
+        for (int i = moves.size() - 1; i >= 0; i--)
+            rollback_swap(moves[i]);
     }
 
     int Board::cost()
