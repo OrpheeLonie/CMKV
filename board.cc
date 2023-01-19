@@ -123,6 +123,22 @@ namespace tetravex
         swap(std::get<0>(move), std::get<1>(move));
     }
 
+    std::vector<std::tuple<size_t, size_t>> Board::nb_random_swap(size_t nb_swap)
+    {
+        std::vector<std::tuple<size_t, size_t>> output;
+
+        for (size_t i = 0; i < nb_swap; i++)
+            output.push_back(random_swap());
+
+        return output;
+    }
+
+    void Board::rollback_nb_swap(std::vector<std::tuple<size_t, size_t>> moves)
+    {
+        for (int i = moves.size() - 1; i >= 0; i--)
+            rollback_swap(moves[i]);
+    }
+
     int Board::cost()
     {
         int total_cost = 0;
