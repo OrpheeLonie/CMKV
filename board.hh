@@ -26,6 +26,10 @@ namespace tetravex
         // Swap the tiles at index i1 and i2
         void swap(size_t i1, size_t i2);
 
+
+        std::tuple<size_t, size_t> random_swap();
+        void rollback_swap(std::tuple<size_t, size_t> move);
+
         // Give the number of error
         int cost();
 

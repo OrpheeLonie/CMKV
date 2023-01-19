@@ -5,6 +5,7 @@
 #include <string>
 #include <cmath>
 #include <cstdlib>
+#include <tuple>
 
 namespace tetravex
 {
@@ -104,6 +105,27 @@ namespace tetravex
         Tuile tmp = this->tuiles[i1];
         tuiles[i1] = tuiles[i2];
         tuiles[i2] = tmp;
+    }
+
+    std::tuple<size_t, size_t> Board::random_swap()
+    {
+        size_t len = this->size * this->size;
+
+        int i1 = 0, i2 = 0;
+        do
+        {
+            i1 = std::rand() % len;
+            i2 = std::rand() % len;
+        } while(i1 == i2 || tuiles[i1].is_fixed || tuiles[i2].is_fixed);
+
+        swap(i1, i2);
+
+        return std::tuple<size_t, size_t>{i1, i2};
+    }
+
+    void Board::rollback_swap(std::tuple<size_t, size_t> move)
+    {
+        swap(std::get<0>(move), std::get<1>(move));
     }
 
     int Board::cost()

@@ -34,11 +34,9 @@ namespace tetravex
         while(last_cost != 0)
         {
             // int nb_swap = round(1 + std::abs(clock(gen)));
-            int nb_swap = 1;
+            auto move = board->random_swap();
 
-            auto next = board->next_board(nb_swap);
-
-            new_cost = next->cost();
+            new_cost = board->cost();
             // double alpha = new_cost / last_cost;
 
 
@@ -51,15 +49,13 @@ namespace tetravex
                     std::exp((last_cost - new_cost)/T) > (double(std::rand()) / RAND_MAX))
             {
                 T *= 0.9999;
-                T = std::max(T, 0.3);
+                T = std::max(T, 0.4);
 
-                delete board;
-                board = next;
                 last_cost = new_cost;
             }
             else
             {
-                delete next;
+                board->rollback_swap(move);
             }
         }
 
